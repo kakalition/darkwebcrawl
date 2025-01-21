@@ -1,4 +1,5 @@
 import datetime
+import utils
 import logging
 import re
 import sys
@@ -175,14 +176,11 @@ class DarkwebCrawler(BaseCrawler):
                     element = WebDriverWait(self.driver, 10).until(
                         EC.visibility_of_element_located((By.XPATH, "/html/body/div/div[2]/p"))
                     )
-                    # print("Wait captcha is ready", file=sys.stdout)
-                    # self.driver.browser.maximize_window()
 
                     logging.info(f"Wait captcha is ready")
 
                     if not window_opened:
-                        self.driver.fullscreen_window()
-                        self.driver.set_window_size(1024, 600)
+                        utils.bring_window_to_front(self.driver)
                         window_opened = True
                 except Exception as e:
                     print("No captcha")

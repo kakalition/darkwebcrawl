@@ -1,3 +1,4 @@
+import utils
 import logging
 import re
 import sys
@@ -232,14 +233,20 @@ class DarkwebCrawler(BaseCrawler):
 
     def scrape(self, url, idpost):
         self.driver.get(self.base_url)
-        while True:
 
+        window_opened = False
+
+        while True:
             try:
                 element = WebDriverWait(self.driver, 10).until(
                     EC.visibility_of_element_located((By.XPATH, "/html/body/div/div/div[4]"))
                 )
                 # print("Wait captcha is ready", file=sys.stdout)
                 logging.info(f"Wait captcha is ready")
+
+                if not window_opened:
+                    utils.bring_window_to_front(self.driver)
+                    window_opened = True
             except Exception as e:
                 print("No captcha")
                 self.driver.get(url)

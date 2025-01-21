@@ -1,3 +1,4 @@
+from email import utils
 import logging
 import re
 import sys
@@ -214,6 +215,8 @@ class DarkwebCrawler(BaseCrawler):
             return None
 
     def scrape(self, url, idpost):
+        window_opened = False
+
         try:
             self.driver.get(self.base_url)
             while True:
@@ -223,6 +226,10 @@ class DarkwebCrawler(BaseCrawler):
                     )
                     # print("Wait captcha is ready", file=sys.stdout)
                     logging.info(f"Wait captcha is ready")
+
+                    if not window_opened:
+                        utils.bring_window_to_front(self.driver)
+                        window_opened = True
                 except Exception as e:
                     print("No captcha")
                     self.driver.get(url)
