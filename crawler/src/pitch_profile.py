@@ -1,5 +1,6 @@
 import logging
 import re
+import sys
 import time
 import traceback
 from bs4 import BeautifulSoup
@@ -237,7 +238,8 @@ class DarkwebCrawler(BaseCrawler):
                 element = WebDriverWait(self.driver, 10).until(
                     EC.visibility_of_element_located((By.XPATH, "/html/body/div/div/div[4]"))
                 )
-                print("Wait captcha is ready")
+                # print("Wait captcha is ready", file=sys.stdout)
+                logging.info(f"Wait captcha is ready")
             except Exception as e:
                 print("No captcha")
                 self.driver.get(url)

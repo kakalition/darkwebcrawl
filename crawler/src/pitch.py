@@ -1,6 +1,7 @@
 import datetime
 import logging
 import re
+import sys
 import time
 from bs4 import BeautifulSoup
 from pymongo import MongoClient
@@ -270,7 +271,9 @@ class DarkwebCrawler(BaseCrawler):
                 element = WebDriverWait(self.driver, 10).until(
                     EC.visibility_of_element_located((By.XPATH, "/html/body/div/div/div[4]"))
                 )
-                print("Wait captcha is ready")
+                # print("Wait captcha is ready", file=sys.stdout)
+                self.driver.switch_to.window(self.driver.current_window_handle)
+                logging.info(f"Wait captcha is ready")
             except Exception as e:
                 print("No captcha")
                 self.driver.get(url)
