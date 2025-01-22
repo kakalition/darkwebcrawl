@@ -28,9 +28,13 @@ class SeleniumConfig:
     def create_firefox_driver(self):
         binary = FirefoxBinary(self.binary_path)
         profile = FirefoxProfile(self.profile_path)
-        return webdriver.Firefox(
+        driver = webdriver.Firefox(
             profile, binary, executable_path=self.geckodriver_path, options=self.options
         )
+
+        driver.minimize_window()
+
+        return driver
 
     def __del__(self):
         try:

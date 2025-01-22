@@ -6,10 +6,10 @@ load_dotenv()
 
 # Path to the binary, profile, and driver of the browser
 # BINARY_PATH = r"C:\\Users\\SII\\Desktop\\Tor Browser\\Browser\\firefox.exe"
-BINARY_PATH = "/opt/homebrew/Caskroom/tor-browser/14.0.4/Tor Browser.app/Contents/MacOS/firefox"
+BINARY_PATH = "C:\\Users\\kakal\\Desktop\\Tor Browser\\Browser\\firefox.exe"
 # PROFILE_PATH = r"C:\Users\\SII\\Desktop\\Tor Browser\\Browser\\TorBrowser\\Data\\Browser\\profile.default"
-PROFILE_PATH = "/opt/homebrew/Caskroom/tor-browser/14.0.4/Tor Browser.app/Contents/Resources/TorBrowser/Tor"
-GECKO_DRIVER_PATH = ("/opt/homebrew/opt/geckodriver/bin/geckodriver")
+PROFILE_PATH = "C:\\Users\\kakal\\Desktop\\Tor Browser\\Browser\\TorBrowser\\Data\\Browser\\profile.default"
+GECKO_DRIVER_PATH = "C:\\Users\\kakal\\Desktop\\Workspaces\\darkwebcrawl\\geckodriver.exe"
 
 # MongoDB connection string
 MONGO_HOST = 'localhost'
