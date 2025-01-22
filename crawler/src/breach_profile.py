@@ -1,3 +1,4 @@
+from email import utils
 import logging
 import selenium_utils
 import re
@@ -215,6 +216,8 @@ class DarkwebCrawler(BaseCrawler):
             return None
 
     def scrape(self, url, idpost):
+        window_opened = False
+
         window_opened = False
 
         try:

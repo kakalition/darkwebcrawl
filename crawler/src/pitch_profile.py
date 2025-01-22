@@ -1,3 +1,4 @@
+import utils
 import logging
 import selenium_utils
 import re
@@ -235,6 +236,9 @@ class DarkwebCrawler(BaseCrawler):
         window_opened = False
 
         self.driver.get(self.base_url)
+
+
+        window_opened = False
 
         while True:
             try:
