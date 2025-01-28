@@ -24,7 +24,7 @@ logging.basicConfig(
     level=logging.INFO, format="[%(asctime)s] [%(levelname)s] %(message)s"
 )
 
-client = MongoClient("mongodb://localhost:27017/")
+client = MongoClient(f"mongodb://{MONGO_HOST}:{MONGO_PORT}/")
 db = client['darkweb_task']
 collection = db['testing']
 

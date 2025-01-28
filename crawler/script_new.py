@@ -10,10 +10,15 @@ from datetime import datetime
 import pytz
 import time
 
+from config import (
+    MONGO_HOST,
+    MONGO_PORT,
+)
+
 jakarta_tz = pytz.timezone('Asia/Jakarta')
 
 # Initialize MongoDB Client
-client = MongoClient("mongodb://localhost:27017/")
+client = MongoClient(f"mongodb://{MONGO_HOST}:{MONGO_PORT}/")
 db = client['darkweb_task']
 collection = db['jobs_crawler']
 

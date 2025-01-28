@@ -12,8 +12,13 @@ import pytz
 
 from config import SITES, PROFILES
 
+from config import (
+    MONGO_HOST,
+    MONGO_PORT,
+)
+
 jakarta_tz = pytz.timezone('Asia/Jakarta')
-client = MongoClient("mongodb://localhost:27017/")
+client = MongoClient(f"mongodb://{MONGO_HOST}:{MONGO_PORT}/")
 db = client['darkweb_task']
 collection = db['jobs_crawler']
 
