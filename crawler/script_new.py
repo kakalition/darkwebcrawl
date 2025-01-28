@@ -41,7 +41,7 @@ def get_oldest_site():
         return oldest_profile['name_site']
     return None
 
-def get_next_record(action_type, site=None):
+def get_next_record(action_type, userid, site=None):
     """Get next unprocessed record"""
     query = {}
     if action_type == "update_posts":
@@ -58,7 +58,8 @@ def get_next_record(action_type, site=None):
         query,
         {
             "$set": {
-                "status": "3"  # Temporary status during processing
+                "status": "3",  # Temporary status during processing
+                "user_id": userid
             }
         },
         sort=[("created_date", 1)],
@@ -109,7 +110,7 @@ def process_continuously(action_type, userid, site=None):
     consecutive_empty = 0
     
     while True:
-        record = get_next_record(action_type, site)
+        record = get_next_record(action_type, userid, site)
         
         if not record:
             consecutive_empty += 1

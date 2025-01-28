@@ -5,9 +5,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Path to the binary, profile, and driver of the browser
-BINARY_PATH = f"{os.getenv("DWC_TOR_BINARY_PATH")}" or ""
-PROFILE_PATH = f"{os.getenv("DWC_TOR_PROFILE_PATH")}" or ""
-GECKO_DRIVER_PATH = f"{os.getenv("DWC_GECKO_DRIVER_PATH")}" or ""
+BINARY_PATH = f"{os.getenv('DWC_TOR_BINARY_PATH')}" or ""
+PROFILE_PATH = f"{os.getenv('DWC_TOR_PROFILE_PATH')}" or ""
+GECKO_DRIVER_PATH = f"{os.getenv('DWC_GECKO_DRIVER_PATH')}" or ""
 
 # BINARY_PATH = "/opt/homebrew/Caskroom/tor-browser/14.0.4/Tor Browser.app/Contents/MacOS/firefox"
 # PROFILE_PATH = "/opt/homebrew/Caskroom/tor-browser/14.0.4/Tor Browser.app/Contents/Resources/TorBrowser/Tor"
