@@ -180,8 +180,18 @@ class DarkwebCrawler(BaseCrawler):
                     logging.info(f"Wait captcha is ready")
 
                     if not window_opened:
-                        utils.bring_window_to_front(self.driver)
+                        logging.info('bring to front')
+                        if sys.platform == 'win32':
+                            logging.info('win32')
+                            position = driver.get_window_position
+                            driver.minimize_window()
+                            driver.set_window_position(position['x'], position['y'])
+                        else:
+                            logging.info('mac')
+                            driver.fullscreen_window()
+                            driver.set_window_size(1024, 600)
                         window_opened = True
+
                 except Exception as e:
                     print("No captcha")
                     self.driver.get(url)

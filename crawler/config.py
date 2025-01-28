@@ -5,17 +5,19 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Path to the binary, profile, and driver of the browser
-# BINARY_PATH = r"C:\\Users\\SII\\Desktop\\Tor Browser\\Browser\\firefox.exe"
-BINARY_PATH = "/opt/homebrew/Caskroom/tor-browser/14.0.4/Tor Browser.app/Contents/MacOS/firefox"
-# PROFILE_PATH = r"C:\Users\\SII\\Desktop\\Tor Browser\\Browser\\TorBrowser\\Data\\Browser\\profile.default"
-PROFILE_PATH = "/opt/homebrew/Caskroom/tor-browser/14.0.4/Tor Browser.app/Contents/Resources/TorBrowser/Tor"
-GECKO_DRIVER_PATH = ("/opt/homebrew/opt/geckodriver/bin/geckodriver")
+BINARY_PATH = f"{os.getenv("DWC_TOR_BINARY_PATH")}" or ""
+PROFILE_PATH = f"{os.getenv("DWC_TOR_PROFILE_PATH")}" or ""
+GECKO_DRIVER_PATH = f"{os.getenv("DWC_GECKO_DRIVER_PATH")}" or ""
+
+# BINARY_PATH = "/opt/homebrew/Caskroom/tor-browser/14.0.4/Tor Browser.app/Contents/MacOS/firefox"
+# PROFILE_PATH = "/opt/homebrew/Caskroom/tor-browser/14.0.4/Tor Browser.app/Contents/Resources/TorBrowser/Tor"
+# GECKO_DRIVER_PATH = "/opt/homebrew/opt/geckodriver/bin/geckodriver"
 
 # MongoDB connection string
-MONGO_HOST = 'localhost'
-MONGO_PORT = 27017
-MONGO_USER = ''
-MONGO_PASS = ''
+MONGO_HOST = os.getenv("DWC_MONGO_HOST") or ''
+MONGO_PORT =  int(os.getenv("DWC_MONGO_PORT") or 0)
+MONGO_USER = os.getenv("DWC_MONGO_USER") or ''
+MONGO_PASS = os.getenv("DWC_MONGO_PASS") or ''
 
 # All the websites to be scraped
 SITES = [
