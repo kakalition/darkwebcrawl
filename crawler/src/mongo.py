@@ -1,5 +1,10 @@
 import os
-
+from config import (
+    MONGO_HOST,
+    MONGO_PASS,
+    MONGO_PORT,
+    MONGO_USER,
+)
 
 try:
     from pymongo import MongoClient
@@ -9,10 +14,10 @@ except ImportError:
 class MongoDBClient:
     def __init__(
         self,
-        host=os.environ["MONGO_HOST"],
-        port=int(os.environ["MONGO_PORT"]),
-        username=os.environ["MONGO_USER"],
-        password=os.environ["MONGO_PASS"],
+        host=MONGO_HOST,
+        port=MONGO_PORT,
+        username=MONGO_USER,
+        password=MONGO_PASS,
         database_name="crawler",
     ):
         self.client = MongoClient(

@@ -77,14 +77,15 @@ def process_record(record, action_type, userid):
         
         name_param = f"{name_site}_profile" if action_type == "update_profiles" else name_site
         print(f"Processing {action_type} for {name_site}, ID: {idpost}")
-        
+
         result = subprocess.run(
             ["python", "run3.py", 
              "--sites", urlpost,
              '--name', name_param,
              '--idpost', str(idpost),
              '--userid', userid],
-            text=True
+            text=True,
+            env=os.environ.copy()
         )
         
         if result.returncode == 0:
