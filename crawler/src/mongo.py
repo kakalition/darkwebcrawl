@@ -3,7 +3,6 @@ try:
 except ImportError:
     raise ImportError('PyMongo is not installed in your machine.')
 
-
 class MongoDBClient:
     def __init__(
         self,

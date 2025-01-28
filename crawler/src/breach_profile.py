@@ -1,5 +1,6 @@
 from email import utils
 import logging
+import selenium_utils
 import re
 import sys
 import time
@@ -217,25 +218,29 @@ class DarkwebCrawler(BaseCrawler):
     def scrape(self, url, idpost):
         window_opened = False
 
+        window_opened = False
+
         try:
             self.driver.get(self.base_url)
             while True:
                 try:
                     element = WebDriverWait(self.driver, 10).until(
-                        EC.visibility_of_element_located((By.XPATH, "/html/body/div/div/div[4]"))
+                        EC.visibility_of_element_located((By.XPATH, "/html/body/div/div[2]/form/div[1]"))
                     )
-                    # print("Wait captcha is ready", file=sys.stdout)
+
                     logging.info(f"Wait captcha is ready")
 
                     if not window_opened:
-                        utils.bring_window_to_front(self.driver)
+                        selenium_utils.bring_window_to_front(self.driver)
                         window_opened = True
+
                 except Exception as e:
                     print("No captcha")
                     self.driver.get(url)
                     break
                 time.sleep(1)
                 
+            self.driver.minimize_window()
             # Check for thank you page/captcha failure
             try:
                 thank_you = WebDriverWait(self.driver, 5).until(

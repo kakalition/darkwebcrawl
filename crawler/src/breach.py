@@ -3,6 +3,7 @@ import utils
 import logging
 import re
 import sys
+import selenium_utils
 import time
 from pymongo import MongoClient
 from bson.objectid import ObjectId
@@ -43,6 +44,7 @@ class DarkwebCrawler(BaseCrawler):
         driver_config = SeleniumConfig(GECKO_DRIVER_PATH, BINARY_PATH, PROFILE_PATH)
         driver = driver_config.create_firefox_driver()
         driver.implicitly_wait(15)
+
         return driver
 
     # ------ Utility methods for parsing the web page ------
@@ -165,7 +167,6 @@ class DarkwebCrawler(BaseCrawler):
             return None
 
     def scrape(self, url, idpost):
-        # Initialize driver and handle captcha first
         self.driver.get(self.base_url)
 
         window_opened = False
@@ -174,7 +175,7 @@ class DarkwebCrawler(BaseCrawler):
             while True:
                 try:
                     element = WebDriverWait(self.driver, 10).until(
-                        EC.visibility_of_element_located((By.XPATH, "/html/body/div/div[2]/p"))
+                        EC.visibility_of_element_located((By.XPATH, "/html/body/div/div[2]/form/div[1]"))
                     )
 
                     logging.info(f"Wait captcha is ready")
@@ -198,6 +199,7 @@ class DarkwebCrawler(BaseCrawler):
                     break
                 time.sleep(1)
                 
+            self.driver.minimize_window()
             soup = self._get_body_html()
             last_page = self._get_last_page_number(soup)
             logging.info(f"Total pages: {last_page}")
