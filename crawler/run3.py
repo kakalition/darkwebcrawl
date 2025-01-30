@@ -20,7 +20,7 @@ from config import (
 )
 
 jakarta_tz = pytz.timezone('Asia/Jakarta')
-client = MongoClient(f"mongodb://{MONGO_USER}:{MONGO_PASS}@{MONGO_HOST}:{MONGO_PORT}?directConnection=true")
+client = MongoClient(f"mongodb://{MONGO_USER}:{MONGO_PASS}@{MONGO_HOST}:{MONGO_PORT}/allnewdarkweb?directConnection=true")
 db = client['allnewdarkweb']
 collection = db['jobs_crawler']
 

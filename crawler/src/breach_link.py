@@ -33,7 +33,7 @@ class DarkwebCrawler(BaseCrawler):
     def __init__(self):
         super().__init__()
         self.mongodb_client = MongoDBClient(
-            host=MONGO_HOST, port=MONGO_PORT, username=MONGO_USER, password=MONGO_PASS
+            host=MONGO_HOST, port=MONGO_PORT, username=MONGO_USER, password=MONGO_PASS, database_name="allnewdarkweb"
         )
         self.driver = None
         self.processed_links = set()  # Set untuk tracking URL yang sudah diproses

@@ -24,7 +24,7 @@ logging.basicConfig(
     level=logging.INFO, format="[%(asctime)s] [%(levelname)s] %(message)s"
 )
 
-client = client = MongoClient(f"mongodb://{MONGO_USER}:{MONGO_PASS}@{MONGO_HOST}:{MONGO_PORT}?directConnection=true")
+client = MongoClient(f"mongodb://{MONGO_USER}:{MONGO_PASS}@{MONGO_HOST}:{MONGO_PORT}/allnewdarkweb?directConnection=true")
 db = client['allnewdarkweb']
 collection = db['testing']
 
@@ -35,7 +35,7 @@ class DarkwebCrawler(BaseCrawler):
     def __init__(self):
         super().__init__()
         self.mongodb_client = MongoDBClient(
-            host=MONGO_HOST, port=MONGO_PORT, username=MONGO_USER, password=MONGO_PASS
+            host=MONGO_HOST, port=MONGO_PORT, username=MONGO_USER, password=MONGO_PASS, database_name="allnewdarkweb"
         )
 
     def init_driver(self):

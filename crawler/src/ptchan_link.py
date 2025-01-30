@@ -33,7 +33,7 @@ class DarkwebCrawler(BaseCrawler):
     def _init_(self):
         super()._init_()
         self.mongodb_client = MongoDBClient(
-            host=MONGO_HOST, port=MONGO_PORT, username=MONGO_USER, password=MONGO_PASS
+            host=MONGO_HOST, port=MONGO_PORT, username=MONGO_USER, password=MONGO_PASS, database_name="allnewdarkweb"
         )
         self.driver = None
 
