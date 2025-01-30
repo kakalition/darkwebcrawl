@@ -18,7 +18,7 @@ class MongoDBClient:
         port=MONGO_PORT,
         username=MONGO_USER,
         password=MONGO_PASS,
-        database_name="crawler",
+        database_name="allnewdarkweb"
     ):
         self.client = MongoClient(f"mongodb://{MONGO_USER}:{MONGO_PASS}@{MONGO_HOST}:{MONGO_PORT}/allnewdarkweb?directConnection=true")
         self.database = self.client[database_name]

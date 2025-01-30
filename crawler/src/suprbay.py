@@ -25,7 +25,8 @@ class DarkwebCrawler(BaseCrawler):
             host=MONGO_HOST,
             port=MONGO_PORT,
             username=MONGO_USER,
-            password=MONGO_PASS
+            password=MONGO_PASS,
+            database_name="allnewdarkweb"
         )
 
     def init_driver(self):
