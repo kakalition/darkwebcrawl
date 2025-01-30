@@ -11,6 +11,8 @@ import pytz
 import time
 
 from config import (
+    MONGO_USER,
+    MONGO_PASS,
     MONGO_HOST,
     MONGO_PORT,
 )
@@ -18,8 +20,8 @@ from config import (
 jakarta_tz = pytz.timezone('Asia/Jakarta')
 
 # Initialize MongoDB Client
-client = MongoClient(f"mongodb://{MONGO_HOST}:{MONGO_PORT}/")
-db = client['darkweb_task']
+client = MongoClient(f"mongodb://{MONGO_USER}:{MONGO_PASS}@{MONGO_HOST}:{MONGO_PORT}?directConnection=true")
+db = client['allnewdarkweb']
 collection = db['jobs_crawler']
 
 def get_oldest_site():
@@ -64,7 +66,7 @@ def get_next_record(action_type, userid, site=None):
         {
             "$set": {
                 "status": "3",  # Temporary status during processing
-                "user_id": userid
+                "running_user_id": userid
             }
         },
         sort=[("created_date", 1)],

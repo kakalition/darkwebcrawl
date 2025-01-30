@@ -20,7 +20,7 @@ class MongoDBClient:
         password=MONGO_PASS,
         database_name="crawler",
     ):
-        self.client = MongoClient(f"mongodb://{MONGO_HOST}:{MONGO_PORT}/")
+        self.client = client = MongoClient(f"mongodb://{MONGO_USER}:{MONGO_PASS}@{MONGO_HOST}:{MONGO_PORT}?directConnection=true")
         self.database = self.client[database_name]
 
     def upsert_document(self, collection_name, document, query):

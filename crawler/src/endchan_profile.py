@@ -24,8 +24,8 @@ logging.basicConfig(
     level=logging.INFO, format="[%(asctime)s] [%(levelname)s] %(message)s"
 )
 
-client = MongoClient(f"mongodb://{MONGO_HOST}:{MONGO_PORT}/")
-db = client['darkweb_task']
+client = client = MongoClient(f"mongodb://{MONGO_USER}:{MONGO_PASS}@{MONGO_HOST}:{MONGO_PORT}?directConnection=true")
+db = client['allnewdarkweb']
 collection = db['testing']
 
 class DarkwebCrawler(BaseCrawler):

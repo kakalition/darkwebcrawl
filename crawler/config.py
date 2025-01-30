@@ -1,23 +1,32 @@
 import os
+import re
 
 from dotenv import load_dotenv
 
 load_dotenv()
 
+def remove_quotes(text):
+  return re.sub(r"[\"']", "", text)
+
 # Path to the binary, profile, and driver of the browser
-BINARY_PATH = f"{os.getenv('DWC_TOR_BINARY_PATH')}" or ""
-PROFILE_PATH = f"{os.getenv('DWC_TOR_PROFILE_PATH')}" or ""
-GECKO_DRIVER_PATH = f"{os.getenv('DWC_GECKO_DRIVER_PATH')}" or ""
+BINARY_PATH = remove_quotes(f"{os.getenv('DWC_TOR_BINARY_PATH')}" or "")
+PROFILE_PATH = remove_quotes(f"{os.getenv('DWC_TOR_PROFILE_PATH')}" or "")
+GECKO_DRIVER_PATH = remove_quotes(f"{os.getenv('DWC_GECKO_DRIVER_PATH')}" or "")
 
 # BINARY_PATH = "/opt/homebrew/Caskroom/tor-browser/14.0.4/Tor Browser.app/Contents/MacOS/firefox"
 # PROFILE_PATH = "/opt/homebrew/Caskroom/tor-browser/14.0.4/Tor Browser.app/Contents/Resources/TorBrowser/Tor"
 # GECKO_DRIVER_PATH = "/opt/homebrew/opt/geckodriver/bin/geckodriver"
 
 # MongoDB connection string
-MONGO_HOST = os.getenv("DWC_MONGO_HOST") or ''
-MONGO_PORT =  int(os.getenv("DWC_MONGO_PORT") or 0)
-MONGO_USER = os.getenv("DWC_MONGO_USER") or ''
-MONGO_PASS = os.getenv("DWC_MONGO_PASS") or ''
+# MONGO_HOST = remove_quotes(os.getenv("DWC_MONGO_HOST") or '')
+# MONGO_PORT =  int(remove_quotes(os.getenv("DWC_MONGO_PORT")) or 0)
+# MONGO_USER = remove_quotes(os.getenv("DWC_MONGO_USER") or '')
+# MONGO_PASS = remove_quotes(os.getenv("DWC_MONGO_PASS") or '')
+
+MONGO_HOST = "167.99.72.105"
+MONGO_PORT =  "27017"
+MONGO_USER = "allnewdarkweb_user"
+MONGO_PASS = "!Allnew2025darkw3b"
 
 # All the websites to be scraped
 SITES = [
