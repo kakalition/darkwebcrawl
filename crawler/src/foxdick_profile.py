@@ -124,7 +124,7 @@ class DarkwebCrawler(BaseCrawler):
             self.saved_profiles += 1
             print("\n" + "="*50)
             print(f"New Profile #{self.saved_profiles}")
-            print(f"Username: {data.username}")
+            print(f"Username: {data.username.encode("utf-8")}")
             print(f"Website: {data.website}")
             print(f"Avatar: {data.avatar}")
             print("="*50 + "\n")
