@@ -10,13 +10,13 @@ def clean_html(html_content):
 
 def if_exists(post_id, mongo_client):
     mongo_conn = mongo_client
-    collection = mongo_conn.database['jobs_crawler']
+    collection = mongo_conn.database['crawling']
     return collection.count_documents({"post_id": post_id})
 
 
 def if_exists_profile(username, website, mongo_client):
     mongo_conn = mongo_client
-    collection = mongo_conn.database['jobs_crawler']
+    collection = mongo_conn.database['crawling']
     return collection.count_documents({"username": username, "website": website})
 
 

@@ -22,7 +22,7 @@ jakarta_tz = pytz.timezone('Asia/Jakarta')
 # Initialize MongoDB Client
 client = MongoClient(f"mongodb://{MONGO_USER}:{MONGO_PASS}@{MONGO_HOST}:{MONGO_PORT}/allnewdarkweb?directConnection=true")
 db = client['allnewdarkweb']
-collection = db['jobs_crawler']
+collection = db['crawling']
 
 def get_oldest_site():
     """Get the site name with the oldest unprocessed record"""
